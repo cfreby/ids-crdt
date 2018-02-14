@@ -21,8 +21,23 @@ This program presents a way to manage a Snort-like IDS with the help of CRDTs. I
 - snortRule.py : a class for the creation and manipulation of Snort-like rules,
 - crdtSnort.py : a class for the constitution of the signature database,
 - main.py : the main program where a first thread creates and transmits rules to be added in the database of each site, while a second thread waits for updates from other nodes and adds received rules to the local database.
+- nodelist.txt : the list of all the nodes of your distributed system. Each node will try to send its updates to the nodes listed in this file using UDP sockets.
 
 Some methods randomize the order of reception of every update to bring disorder in the databases, and an algorithm will be applied to ensure the convergence of the system.
+
+When the database is updated (at the creation or reception of a new rule), its current state is printed ; as the convergence algorithm is applied, rules will switch places and reach a common order on every node.
+
+# How to use it
+- Put all python files along with nodelist.txt in the same directory
+- Edit nodelist.txt to list all nodes of the system (even the local node, it will be removed automatically by the program)
+- Use the following command : python main.py *address* *port*
+- Launch several programs at the same time (a script could launch several programs at the same time)
+- Watch the real-time convergence of the databases
+
+# Future works
+In the case of an Intrusion Detection System, we can imagine that the machines running this program wouldn't have much downtime, but to manage the risk of failure, we would need a reconciliation algorithm, allowing a node to gather missed updates and fill its database with the help of the other nodes. This would also allow new nodes to join the system and build their database rapidly.
+
+To adapt this program to a distributed system with a dynamic topology, we need to replace the nodelist file with a way to add and remove nodes from the transmission list (just like a P2P network).
 
 # REFERENCES
 M. Shapiro and N. Preguiça, “Designing a commutative replicated data type”
