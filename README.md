@@ -35,4 +35,5 @@ Nuno Preguiça, Joan Manuel Marquès, Marc Shapiro, Mihai Leția. “A commutati
 B. Nédelec, P. Molli, A. Mostefaoui, E. Desmontils, "LSEQ: An adaptive structure for sequences in distributed collaborative editing"
 Proc. 13th ACM Symp. Document Eng., pp. 37-46, Sep. 2013.
 
-https://www.snort.org/
+[Snort, an Intrusion Detection System](https://www.snort.org/)
+
